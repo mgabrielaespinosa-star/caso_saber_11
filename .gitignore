@@ -1,0 +1,17 @@
+# Entornos virtuales
+venv/
+.venv/
+# Caché de Python
+__pycache__/
+*.pyc
+.pytest_cache/
+# Datos crudos pesados (el parquet de muestra SÍ se versiona: pesa <1 MB)
+*.csv
+# Secretos — jamás al repo
+.env
+*.key
+# Sistema
+.DS_Store
+Thumbs.db
+# Notebooks: checkpoints
+.ipynb_checkpoints/
