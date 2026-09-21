@@ -64,6 +64,16 @@ def _predecir_df(df: pd.DataFrame) -> list[Prediccion]:
     ]
 
 
+@app.get("/", include_in_schema=False)
+def home():
+    """Puerta de entrada: orienta a quien llega a la raíz del servicio."""
+    return {
+        "servicio": "API Saber 11 · UAI",
+        "mensaje": "API de predicción funcionando. Documentación interactiva en /docs",
+        "endpoints": ["/health", "/model-info", "/predict", "/predict-batch", "/docs"],
+    }
+
+
 @app.get("/health")
 def health():
     """Estado del servicio y confirmación de que el modelo está en memoria."""
