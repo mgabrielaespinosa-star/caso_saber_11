@@ -1,0 +1,33 @@
+{
+  "modelo": "logistic_regression",
+  "target": "rendimiento_alto",
+  "definicion_target": "punt_matematicas >= 51 (mediana nacional 2022-4)",
+  "features": [
+    "fami_estratovivienda",
+    "fami_educacionmadre",
+    "fami_educacionpadre",
+    "fami_tieneinternet",
+    "fami_tienecomputador",
+    "cole_naturaleza",
+    "cole_area_ubicacion",
+    "cole_jornada",
+    "estu_genero",
+    "estu_depto_reside"
+  ],
+  "metricas_test": {
+    "logistic_regression": {
+      "roc_auc": 0.7377,
+      "f1": 0.6905
+    },
+    "random_forest": {
+      "roc_auc": 0.7319,
+      "f1": 0.6755
+    }
+  },
+  "seleccion": "mayor ROC AUC en el conjunto de test",
+  "n_filas_entrenamiento": 120000,
+  "semilla": 42,
+  "sklearn": "1.9.1",
+  "python": "3.12.14",
+  "entrenado_utc": "2026-09-21T20:49:50+00:00"
+}
