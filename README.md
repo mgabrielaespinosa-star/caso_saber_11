@@ -8,7 +8,24 @@ de matemáticas en la prueba Saber 11 (Colombia), conociendo **solo su contexto*
 educación de los padres, internet y computador en casa, tipo de colegio, área, jornada,
 género y departamento. Servido como API HTTP con FastAPI.
 
-*(Despliegue en la nube: en curso — la URL pública se publicará en esta sección.)*
+## 🌐 Servicio en línea
+
+**URL pública:** <https://caso-saber-11.onrender.com> · Documentación interactiva: <https://caso-saber-11.onrender.com/docs>
+
+```bash
+curl https://caso-saber-11.onrender.com/health
+# {"status":"ok","model_loaded":true}
+
+curl -X POST https://caso-saber-11.onrender.com/predict -H "Content-Type: application/json" -d '{
+  "fami_estratovivienda": "Estrato 2", "fami_educacionmadre": "Secundaria (Bachillerato) completa",
+  "fami_educacionpadre": "Primaria incompleta", "fami_tieneinternet": "No", "fami_tienecomputador": "No",
+  "cole_naturaleza": "OFICIAL", "cole_area_ubicacion": "RURAL", "cole_jornada": "MAÑANA",
+  "estu_genero": "F", "estu_depto_reside": "CAUCA"}'
+# {"rendimiento_alto":0,"probabilidad":0.1979,"modelo":"logistic_regression",...}
+```
+
+> Nota del plan gratuito: la instancia se suspende tras ~15 min sin tráfico; la primera
+> visita siguiente tarda ~50 s en despertarla. Las siguientes responden al instante.
 
 ## Equipo
 
@@ -148,3 +165,34 @@ llamadas exigidas (predicción exitosa, lote y entrada inválida con 422).
 Saber 11* · Portal de datos abiertos del Estado colombiano.
 Página: <https://www.datos.gov.co/d/kgxf-xxbe> · Cita completa, licencia y comando de
 re-obtención en [`data/README.md`](data/README.md).
+
+## Despliegue en Render (documentación del proceso)
+
+**Elección del proveedor:** evaluamos Google Cloud Run (la nube del curso) vs. Render.
+Elegimos **Render** porque lee nuestro contrato de entorno sin contenedorizar, su plan
+gratuito no exige tarjeta de crédito (el enunciado recomienda evitarla) y trae deploy
+continuo nativo — mínima fricción para el propósito. Cloud Run queda documentado como
+alternativa viable si el servicio requiriera escala real.
+
+**Configuración usada:** Web Service conectado a este repo (rama `main`) · Runtime
+Python 3 · Build `pip install -r requirements.txt` · Start `uvicorn app.main:app
+--host 0.0.0.0 --port $PORT` (la misma línea del `Procfile`) · Instancia Free ·
+Variable de entorno `PYTHON_VERSION=3.12.14` para fijar el intérprete exacto con el
+que se entrenó y serializó el modelo.
+
+**Problemas encontrados y su solución:**
+
+1. *El nombre del servicio no admitía guion bajo:* propusimos `caso_saber_11` (el nombre
+   del repo) pero los hostnames no aceptan `_`. Solución: renombrar el servicio a
+   `caso-saber-11`, que se convirtió en la URL pública.
+2. *Versión de Python por defecto distinta a la de entrenamiento:* Render usa su Python
+   más reciente si no se le indica otro, lo que arriesga la deserialización del `.pkl`
+   (el descuento de −20 del enunciado). Solución preventiva: variable `PYTHON_VERSION=3.12.14`,
+   verificada en el build log ("Installing Python 3.12.14") y en `/model-info`.
+3. *Cold start del plan gratuito:* la instancia se suspende sin tráfico y la primera
+   visita tarda ~50 s. Mitigación: está documentado aquí para el corrector, y el equipo
+   verificará que el servicio esté despierto el día de la entrega, como pide el enunciado.
+
+**Deploy continuo:** activado con la integración nativa de Render — cada push a `main`
+reconstruye y publica automáticamente (este mismo README se publicó así: el commit que
+lo agregó gatilló el deploy sin intervención manual).
