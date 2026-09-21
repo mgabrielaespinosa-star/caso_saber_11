@@ -13,6 +13,13 @@ from pathlib import Path
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
+
+
+class UTF8JSONResponse(JSONResponse):
+    """JSON con charset explícito: los navegadores muestran los tildes bien."""
+
+    media_type = "application/json; charset=utf-8"
 
 from app.schemas import Estudiante, LoteEstudiantes, Prediccion, PrediccionLote
 
@@ -40,6 +47,7 @@ app = FastAPI(
     ),
     version="1.0.0",
     lifespan=lifespan,
+    default_response_class=UTF8JSONResponse,
 )
 
 
