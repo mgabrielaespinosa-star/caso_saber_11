@@ -48,6 +48,8 @@ del estudiante — predice con ROC AUC 0,74. Un mismo perfil pasa de 19,8% a 85,
 probabilidad de quedar sobre la mediana al cambiar solo sus condiciones de contexto.
 Y el modelo simple superó al complejo.
 
+**Interpretación de resultados:** Alcanzar un ROC AUC de 0,74 nos deja algo muy en claro: el entorno del alumno pesa tanto que es posible predecir su desempeño sin siquiera evaluar sus conocimientos académicos. Pero el dato que más causa impacto es ese salto del 19,8% al 85,9%. Esto demuestra que, con el simple hecho de cambiar las condiciones económicas y tecnológicas de un alumno (como darle internet, un computador o pasar de colegio público a privado), sus chances de éxito aumentan en 66 puntos porcentuales aproximadamente. Los datos puros de la exploración lo respaldan: tener internet en casa sube el promedio de 46,3 a 52,7, y estudiar en un colegio privado marca 54,9 frente al 49,4 de uno público. En términos generales, el modelo evidencia con datos reales la notable desigualdad estructural del sistema educativo. Queda claro que estas variables exógenas impactan significativamente, demostrando que el mérito individual no es suficiente al momento de dar una prueba, sino que todo el contexto previo condiciona el resultado final.
+
 ## Estructura del repositorio
 
 ```
