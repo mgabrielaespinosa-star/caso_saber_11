@@ -14,3 +14,24 @@ https://www.datos.gov.co/resource/kgxf-xxbe.csv?$select=periodo,punt_matematicas
 ```
 
 **Licencia:** datos abiertos del Estado colombiano, uso público con cita de la fuente.
+
+
+
+**Diccionario de datos**
+
+| Campo                  | Tipo de dato   | Tipo de variable | Descripción simple                                                    | Qué mide / representa                                                                     |
+| ---------------------- | -------------- | ---------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `periodo`              | Entero / texto | Temporal         | Periodo en que el estudiante presentó la prueba Saber 11.             | Identifica el año y semestre de aplicación del examen.                                    |
+| `punt_matematicas`     | Numérico       | Cuantitativa     | Puntaje obtenido por el estudiante en Matemáticas.                    | Mide el desempeño del estudiante en el área de Matemáticas en Saber 11.                   |
+| `punt_ingles`          | Numérico       | Cuantitativa     | Puntaje obtenido por el estudiante en Inglés.                         | Mide el desempeño del estudiante en la prueba de Inglés.                                  |
+| `fami_estratovivienda` | Categórico     | Ordinal          | Estrato socioeconómico de la vivienda del estudiante.                 | Permite aproximarse a las condiciones socioeconómicas del hogar donde vive el estudiante. |
+| `fami_educacionmadre`  | Categórico     | Ordinal          | Nivel educativo alcanzado por la madre del estudiante.                | Representa el nivel de formación académica de la madre.                                   |
+| `fami_educacionpadre`  | Categórico     | Ordinal          | Nivel educativo alcanzado por el padre del estudiante.                | Representa el nivel de formación académica del padre.                                     |
+| `fami_tieneinternet`   | Categórico     | Binaria          | Indica si el hogar del estudiante tiene acceso a Internet.            | Mide la disponibilidad de conexión a Internet en la vivienda.                             |
+| `fami_tienecomputador` | Categórico     | Binaria          | Indica si el estudiante dispone de computador en su hogar.            | Mide la disponibilidad de computador en la vivienda.                                      |
+| `cole_naturaleza`      | Categórico     | Nominal          | Tipo de establecimiento educativo según su naturaleza administrativa. | Permite diferenciar si el colegio pertenece al sector oficial o no oficial (privado).     |
+| `cole_area_ubicacion`  | Categórico     | Nominal          | Área geográfica donde está ubicada la sede educativa.                 | Identifica si el colegio está localizado en una zona urbana o rural.                      |
+| `cole_jornada`         | Categórico     | Nominal          | Jornada en la que funciona el establecimiento o sede educativa.       | Identifica el horario o modalidad de jornada en que estudian los estudiantes.             |
+| `estu_genero`          | Categórico     | Nominal          | Género reportado del estudiante que presentó la prueba.               | Permite caracterizar a los estudiantes según género.                                      |
+| `estu_depto_reside`    | Categórico     | Nominal          | Departamento de residencia del estudiante.                            | Identifica el departamento de Colombia donde declara residir el estudiante.               |
+
