@@ -52,6 +52,9 @@ Se inició la API con Uvicorn y se comprobó que la documentación estuviera dis
 
 ```text
 http://localhost:8000/docs
+
+![Uvicorn funcionando](evidencias_reproducibilidad/jairo-uvicorn.png)
+
 ```
 
 El endpoint `/health` respondió correctamente:
