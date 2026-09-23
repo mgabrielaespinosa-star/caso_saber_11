@@ -198,3 +198,11 @@ que se entrenó y serializó el modelo.
 **Deploy continuo:** activado con la integración nativa de Render — cada push a `main`
 reconstruye y publica automáticamente (este mismo README se publicó así: el commit que
 lo agregó gatilló el deploy sin intervención manual).
+
+## Limitaciones y trabajo futuro
+
+- **Un solo período (2022-4).** El umbral de 51 puntos y las relaciones aprendidas provienen de una única aplicación de la prueba; nada garantiza que se mantengan en otros años (cambios en la prueba, efectos de cohorte). Antes de usar el modelo sobre otro período habría que validarlo temporalmente: entrenar en un año y probar en el siguiente.
+- **Asociación, no causa.** Las variables de contexto se autorreportan y están correlacionadas entre sí (estrato, educación de los padres, internet, computador). El modelo describe una asociación poblacional, no el efecto de intervenir sobre un estudiante: el salto de 19,8 % a 85,9 % compara dos perfiles distintos, no a la misma persona antes y después.
+- **Poder predictivo acotado por diseño.** Un ROC AUC de 0,74 deja buena parte de la varianza sin explicar. Al excluir historial académico, colegio y municipio, y trabajar solo con 10 variables categóricas, el modelo no distingue entre estudiantes que comparten un mismo perfil.
+- **Riesgo de uso indebido.** Predecir desempeño a partir de estrato, género o departamento puede reforzar sesgos si se aplica a individuos. Su uso responsable es agregado: identificar dónde focalizar apoyo, no etiquetar estudiantes.
+- **Hacia dónde crecer.** Incorporar varios períodos con validación temporal; predecir el puntaje continuo o el global en lugar de un corte binario; reportar calibración de probabilidades además del AUC; y agregar monitoreo al servicio (deriva en las categorías de entrada, latencia) para que el deploy continuo no publique un modelo degradado sin aviso.
