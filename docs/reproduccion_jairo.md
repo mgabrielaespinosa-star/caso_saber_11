@@ -52,8 +52,7 @@ Se inició la API con Uvicorn y se comprobó que la documentación estuviera dis
 
 ```text
 http://localhost:8000/docs
-
-(evidencias_reproducibilidad/jairo-uvicorn.png)
+![alt text](evidencias_reproducibilidad/jairo-uvicorn.png)
 
 ```
 
