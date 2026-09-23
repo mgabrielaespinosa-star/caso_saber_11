@@ -63,6 +63,9 @@ El endpoint `/health` respondió correctamente:
 StatusCode : 200
 Content : {"status":"ok","model_loaded":true}
 ```
+### Prueba de la API
+
+![Prueba de la API](evidencias_reproducibilidad/jairo-prueba.png)
 
 También se probó el endpoint `POST /predict` desde Swagger UI, obteniendo una respuesta:
 
@@ -83,6 +86,7 @@ Resultado final:
 ```text
 7 passed
 ```
+![Pytest con 7 pruebas aprobadas](evidencias_reproducibilidad/jairo-passed.png)
 
 ## Conclusión
 
